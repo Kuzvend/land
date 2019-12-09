@@ -3,3 +3,6 @@
 
 <param name="length_override/3" value="0.1"/>    <!-- маркер c id 3 имеет размер 10 см -->
 <param name="length_override/17" value="0.25"/>  <!-- маркер c id 17 имеет размер 25 см -->
+
+Подробнее:
+https://clever.coex.tech/ru/aruco_marker.html
