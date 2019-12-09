@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 import rospy
 from math import isnan
 from math import pi
@@ -21,21 +23,21 @@ z = 1.5
 while(True):
     navigate(x=0, y=0, z=1.5-z, speed=0.5, frame_id='body')
     z = 1.5
-    if isnan(get_telemetry(frame_id='aruco_15').z):
+    if isnan(get_telemetry(frame_id='aruco_15'):  #проверка на наличие платформы (маркера) в зоне видимости
         rospy.sleep(0.2)
         pass
 
-    z = get_telemetry(frame_id='aruco_15').z
+    z = get_telemetry(frame_id='aruco_15').z  #замер высоты дрона перед началом посадки
     while(z >= 0.5):
 	set_position(x=0, y=-0.15, z=z, yaw=pi*0.5, frame_id='aruco_15')
         z = z - 0.03
         if (z <= 0.5):
             break
-        if isnan(get_telemetry(frame_id='aruco_15').z) == True:
+        if isnan(get_telemetry(frame_id='aruco_15').z) == True:	#проверка на наличие платформы (маркера) в зоне видимости
             break
         r.sleep()
 
-    if isnan(get_telemetry(frame_id='aruco_9').z):
+    if isnan(get_telemetry(frame_id='aruco_9').z): #проверка на наличие платформы (маркера меньшего размера) в зоне видимости
         pass
 
     while(z <= 0.5):
@@ -47,7 +49,7 @@ while(True):
             break
         r.sleep()
 
-    if z <= 0.15:
+    if z <= 0.15:  #посадка
         navigate(x=0, y=0, z=-1, speed=2, frame_id='body')
         rospy.sleep(0.5)
         arming(False)
