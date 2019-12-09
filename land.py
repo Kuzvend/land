@@ -24,7 +24,7 @@ while(True):
     navigate(x=0, y=0, z=1.5-z, speed=0.5, frame_id='body')
     z = 1.5
     if isnan(get_telemetry(frame_id='aruco_15'):  #проверка на наличие платформы (маркера) в зоне видимости
-        rospy.sleep(0.2)
+        r.sleep()
         pass
 
     z = get_telemetry(frame_id='aruco_15').z  #замер высоты дрона перед началом посадки
